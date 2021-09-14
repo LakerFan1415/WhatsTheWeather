@@ -1,5 +1,5 @@
 import Chart from 'chart.js/auto';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
 
 const WeatherChart = ({chartNumber, chartInfo, city }) => {
@@ -25,12 +25,12 @@ const WeatherChart = ({chartNumber, chartInfo, city }) => {
   const getDatesAndTimes = (d, num) => {
     
     console.log(d)
-    try {
-        labels = [];
-        chartData = [];
-        chartData2 = [];
-        chartData3 = [];
-      if (num == 1){
+      labels = [];
+      chartData = [];
+      chartData2 = [];
+      chartData3 = [];
+    try {  
+      if (num === 1){
         // Gets dates for hourly
         //Hourly is the 2 Day Forecast
         for (let i=0; i < d.hourly.length; i++){
@@ -45,12 +45,12 @@ const WeatherChart = ({chartNumber, chartInfo, city }) => {
         }
         chartDataset.push({
           label: 'Temperature',
-          backgroundColor: '#00d4ff',
-          borderColor: '#00d4ff',
+          backgroundColor: '#219cd7',
+          borderColor: '#219cd7',
           data: chartData,
         })
 
-      } else if (num == 2){
+      } else if (num === 2){
         //Get dates & times for daily
         //Displays 8 Days
         for (let i=0; i < d.daily.length; i++){
@@ -70,14 +70,14 @@ const WeatherChart = ({chartNumber, chartInfo, city }) => {
         // Night --> #070a0a
         chartDataset.push({
           label: 'Morning',
-          backgroundColor: '#00d4ff',
-          borderColor: '#00d4ff',
+          backgroundColor: '#219cd7',
+          borderColor: '#219cd7',
           data: chartData,
         })
         chartDataset.push({
           label: 'Day',
-          backgroundColor: '#fd8e2d',
-          borderColor: '#fd8e2d',
+          backgroundColor: '#e0ad81',
+          borderColor: '#e0ad81',
           data: chartData2,
           })
         chartDataset.push({
@@ -86,56 +86,34 @@ const WeatherChart = ({chartNumber, chartInfo, city }) => {
           borderColor: '#070a0a',
           data: chartData3,
         })
-      }
-    
-      
-    } catch {
-      console.log('Nah fam')
-    }
 
+      } else {
+          for (let i=0; i < 24; i ++){
+            let date = new Date((d.hourly[i].dt) * 1000).toLocaleString();
+
+            labels.push(date)
+            chartData.push(d.hourly[i].temp)
+          }
+          chartDataset.push({
+            label: 'Temperature',
+            backgroundColor: '#219cd7',
+            borderColor: '#219cd7',
+            data: chartData,
+          })
+          console.log(labels)
+        
+      }
+
+    }catch(e){
+
+        console.log(e)
+      }
+
+      console.log(chartDataset)
   }
 
   getDatesAndTimes(chartInfo, chartNumber)
 
-    //Daily will have multiple lines -> Morn, Day, Night
-    //Backgroundcolor --> Data points
-    //bordercolor is the actula line color
-
-    /*chartData2 ?
-    data = {
-      labels: labels, //Does not work until data is passed
-      datasets: [{
-        label: 'Temperature',
-        backgroundColor: 'rgb(255, 99, 132)',
-        borderColor: 'rgb(255, 99, 132)',
-        data: chartData,
-      }]
-    }
-    :
-    data = {
-      labels: labels,
-      datasets: [
-        {
-          label: 'Morning',
-          backgroundColor: 'rgb(255, 99, 132)',
-          borderColor: 'rgb(255, 99, 132)',
-          data: chartData,
-        },
-        {
-        label: 'Day',
-        backgroundColor: 'RGB(0,101,255)',
-        borderColor: 'RGB(0,101,255)',
-        data: chartData2,
-        },
-        {
-        label: 'Night',
-        backgroundColor: 'RGB(0,86,0)',
-        borderColor: 'RGB(0,86,0)',
-        data: chartData3,
-        }
-      ]
-    }
-    */
 
   var data = {
     labels: labels,
@@ -173,22 +151,21 @@ const WeatherChart = ({chartNumber, chartInfo, city }) => {
     // Work on this
     
 
-    console.log(chartData2)
-
 
       useEffect(() => {
         let chartParent = document.getElementById('charts');
         if (chartParent.childNodes[0]) {chartParent.removeChild(document.getElementById('aChart'))};
-        let el = document.createElement('canvas');
-        el.id = 'aChart';
-        chartParent.appendChild(el);
-        //Background Color of the canvas
-        document.getElementById('aChart').style.backgroundColor = '#c5d8ef';
-        let chart = new Chart(
-          document.getElementById('aChart'),
-          config
-        )
-
+        if(chartNumber != null){
+          let el = document.createElement('canvas');
+          el.id = 'aChart';
+          chartParent.appendChild(el);
+          //Background Color of the canvas
+          document.getElementById('aChart').style.backgroundColor = '#c5d8ef';
+          let chart = new Chart(
+            document.getElementById('aChart'),
+            config
+          )
+        }
       })
 
     return(

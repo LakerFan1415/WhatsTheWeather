@@ -12,7 +12,7 @@ function App() {
   const [chartInfo, setChartInfo] = useState({});
 
   //0 --> Current, 1 --> 2-Day Forecast, 2 --> 7-Day Forecast
-  const [chartNumber, setChartNumber] = useState(0);
+  const [chartNumber, setChartNumber] = useState(null);
 
   useEffect(() => {
     console.log('Rendered!');
@@ -21,7 +21,7 @@ function App() {
   )
 
   const handleClick = () => {
-    var format = /[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
+    var format = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,<>\/?~]/; /* eslint-disable-line */
     let inputs = document.getElementById('city-input').value.toLowerCase();
     if(!format.test(inputs)){ 
       setCity(inputs);
@@ -29,6 +29,21 @@ function App() {
 
      }
 
+  }
+
+  /* Adds and removes the selected class --> Used in header */
+  const handleMenuClick = (e) => {
+    let numbers = {'Current': 0, '2-Day Forecast':1, '7-Day Forecast':2}
+
+        let listEl = document.getElementsByTagName('li');
+        for (let i=0; i < listEl.length; i++){
+            if (listEl[i].className){
+                listEl[i].classList.remove(listEl[i].className);
+            }
+        }
+        e.target.parentNode.classList.add('selected');
+        //setChartNumber(numbers[e.target.childNodes[0]])
+        setChartNumber(numbers[e.target.innerHTML])
   }
 
   //Work on the fetch and how it is handled
@@ -49,7 +64,7 @@ function App() {
         setChartInfo(response2);
 
         //Converts unix utc date to local date
-        // Will Need this conversion for chart
+        // Add in alerts section
         if (response2.alerts) {
           let alertDate = new Date((response2.alerts[0].start) * 1000);
           let alertMonth = alertDate.getMonth() + 1;
@@ -58,6 +73,9 @@ function App() {
           console.log(alertMonth + '-' + alertDay + '-' + alertYear)
       }
     }
+    //Set Value to Zero
+    document.getElementById('city-input').value = '';
+
   } else {
     throw new Error('Try Another City');
   }
@@ -70,7 +88,7 @@ function App() {
 
   return (
     <div style={{textAlign:'center'}}>
-      <Header setChartNumber={setChartNumber} chartNumber={chartNumber}/>
+      <Header setChartNumber={setChartNumber} chartNumber={chartNumber} handleClick={handleMenuClick}/>
       <SelectCity clickChange={handleClick} />
       <WeatherChart chartNumber={chartNumber} chartInfo={chartInfo} city={city}/>
     </div>
