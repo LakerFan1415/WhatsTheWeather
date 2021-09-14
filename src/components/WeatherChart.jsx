@@ -9,22 +9,12 @@ const WeatherChart = ({chartNumber, chartInfo, city }) => {
   var chartData = [];
   var chartData2 = [];
   var chartData3 = [];
-  //var data;
   var chartDataset = [];
 
-  /*
-    new Date((chartInfo.hourly.dt) * 1000) --> Converts unix standard to readable date and time
-  */
-
-    /*
-      Implement 2-Day and 7-Day Forecase
-      Will work on how to handle current later
-    */
 
   //Converts Dates of hourly information
   const getDatesAndTimes = (d, num) => {
     
-    console.log(d)
       labels = [];
       chartData = [];
       chartData2 = [];
@@ -35,9 +25,6 @@ const WeatherChart = ({chartNumber, chartInfo, city }) => {
         //Hourly is the 2 Day Forecast
         for (let i=0; i < d.hourly.length; i++){
           let date = new Date((d.hourly[i].dt) * 1000).toLocaleString();
-          /* No Longer need added to one structure
-          dates.push(date);
-          */
 
           labels.push(date)
           chartData.push(d.hourly[i].temp)
@@ -56,7 +43,6 @@ const WeatherChart = ({chartNumber, chartInfo, city }) => {
         for (let i=0; i < d.daily.length; i++){
           let date = new Date((d.daily[i].dt) * 1000).toDateString();
 
-          //Need to incorporate each 3 temps for one date
           //morn - day - night
           labels.push(date)
           chartData.push(d.daily[i].temp.morn)
@@ -106,10 +92,7 @@ const WeatherChart = ({chartNumber, chartInfo, city }) => {
 
     }catch(e){
 
-        console.log(e)
       }
-
-      console.log(chartDataset)
   }
 
   getDatesAndTimes(chartInfo, chartNumber)
@@ -132,25 +115,7 @@ const WeatherChart = ({chartNumber, chartInfo, city }) => {
         }
       }
       
-    //Add setup for multi-line chart
   }
-
-    //Make Each Chart for each number
-    // 0 --> Current
-    // 1 --> 2-Day Forecast
-    // 2 --> 7-Day Forecast
-
-    /*if(chartInfo.daily){
-      chartInfo.daily.forEach(e => {
-        console.log(e.temp)
-      })
-    }
-    */
-    
-    // Takes chartInfo --> Sets Labels
-    // Work on this
-    
-
 
       useEffect(() => {
         let chartParent = document.getElementById('charts');
@@ -159,9 +124,10 @@ const WeatherChart = ({chartNumber, chartInfo, city }) => {
           let el = document.createElement('canvas');
           el.id = 'aChart';
           chartParent.appendChild(el);
+
           //Background Color of the canvas
           document.getElementById('aChart').style.backgroundColor = '#c5d8ef';
-          let chart = new Chart(
+          let chart = new Chart(  /* eslint-disable-line */
             document.getElementById('aChart'),
             config
           )

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import './App.css';
 
 import Header from './components/Header';
@@ -14,11 +14,6 @@ function App() {
   //0 --> Current, 1 --> 2-Day Forecast, 2 --> 7-Day Forecast
   const [chartNumber, setChartNumber] = useState(null);
 
-  useEffect(() => {
-    console.log('Rendered!');
-    console.log(city);
-    }
-  )
 
   const handleClick = () => {
     var format = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,<>\/?~]/; /* eslint-disable-line */
@@ -65,13 +60,14 @@ function App() {
 
         //Converts unix utc date to local date
         // Add in alerts section
+        /*
         if (response2.alerts) {
           let alertDate = new Date((response2.alerts[0].start) * 1000);
           let alertMonth = alertDate.getMonth() + 1;
           let alertDay = alertDate.getDate();
           let alertYear = alertDate.getFullYear();
-          console.log(alertMonth + '-' + alertDay + '-' + alertYear)
       }
+      */
     }
     //Set Value to Zero
     document.getElementById('city-input').value = '';
@@ -80,7 +76,7 @@ function App() {
     throw new Error('Try Another City');
   }
     } catch(e) {
-      console.log(e);
+      
       // Add This in Production window.alert(e.message);
     }
     
