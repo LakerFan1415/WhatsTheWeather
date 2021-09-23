@@ -86,7 +86,6 @@ const WeatherChart = ({chartNumber, chartInfo, city }) => {
             borderColor: '#219cd7',
             data: chartData,
           })
-          console.log(labels)
         
       }
 
@@ -107,10 +106,16 @@ const WeatherChart = ({chartNumber, chartInfo, city }) => {
       type: 'line',
       data,
       options: {
+        maintainAspectRatio: false,
+        responsive: true,
         plugins: {
           title: {
             display: true,
-            text: city //Format the city name & size
+            text: city ? city[0].toUpperCase() + city.substring(1) : city, //Format the city name & size
+            color: 'black',
+            font: {
+              size: 30
+            }
           }
         }
       }
@@ -132,6 +137,7 @@ const WeatherChart = ({chartNumber, chartInfo, city }) => {
             config
           )
         }
+        
       })
 
     return(

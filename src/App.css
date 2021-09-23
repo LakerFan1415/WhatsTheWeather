@@ -1,4 +1,8 @@
 
+body > #root > div{
+  height:100vh;
+}
+
 /* Body Style */
 
 body {
@@ -38,4 +42,28 @@ li a:hover {
 
 .selected{
   background-color: #8cb1df;
+}
+
+
+/*  Input Box and Button  */
+#city-input {
+  border: groove;
+  border-radius: 5%;
+  background-color: lightgray;
+  color: black;
+  font-weight: bold;
+}
+
+#city-btn {
+  background-color: lightgray;
+  border: groove;
+}
+
+
+
+/* Chart div --> This adds the height */
+#charts {
+  position: relative;
+  height: 70vh;
+  width: 100%;
 }

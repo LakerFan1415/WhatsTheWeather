@@ -73,11 +73,10 @@ function App() {
     document.getElementById('city-input').value = '';
 
   } else {
-    throw new Error('Try Another City');
+    throw new Error('Try Another City Or Check Spelling');
   }
     } catch(e) {
-      
-      // Add This in Production window.alert(e.message);
+      window.alert(e.message);
     }
     
   }
