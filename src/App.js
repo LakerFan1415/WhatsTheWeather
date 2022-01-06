@@ -36,7 +36,7 @@ function App() {
             }
         }
         e.target.parentNode.classList.add('selected');
-        //setChartNumber(numbers[e.target.childNodes[0]])
+        
         setChartNumber(numbers[e.target.innerHTML])
   }
 
@@ -52,20 +52,9 @@ function App() {
         if (allData.ok){
           const response2 = await allData.json()
 
-          //if (response.message){window.alert('Please Enter Another City!')};
 
         setChartInfo(response2);
 
-        //Converts unix utc date to local date
-        // Add in alerts section
-        /*
-        if (response2.alerts) {
-          let alertDate = new Date((response2.alerts[0].start) * 1000);
-          let alertMonth = alertDate.getMonth() + 1;
-          let alertDay = alertDate.getDate();
-          let alertYear = alertDate.getFullYear();
-      }
-      */
     }
     //Set Value to Zero
     document.getElementById('city-input').value = '';
