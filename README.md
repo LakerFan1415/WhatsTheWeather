@@ -1,6 +1,6 @@
-#Weather Application
+# Weather Application
 
-##Created with:
+## Created with:
 1. React
 2 Open Weather Map api
 https://openweathermap.org/
