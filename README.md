@@ -1,10 +1,10 @@
 # Weather Application
 
 ## Created with:
--React
--Open Weather Map api
-[Open Weather Map]https://openweathermap.org/
--Chart.js
+- React
+- Open Weather Map api
+- [Open Weather Map]https://openweathermap.org/
+- Chart.js
 
 =============
 Adding Some additional Functiontality
