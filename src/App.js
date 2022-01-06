@@ -21,7 +21,6 @@ function App() {
     if(!format.test(inputs)){ 
       setCity(inputs);
       fetchCity(inputs);
-
      }
 
   }
