@@ -40,7 +40,6 @@ function App() {
         setChartNumber(numbers[e.target.innerHTML])
   }
 
-  //Work on the fetch and how it is handled
   const fetchCity = async (city) => {
     try {
     const cityInfo = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${process.env.REACT_APP_API_KEY}`);
