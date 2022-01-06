@@ -51,9 +51,6 @@ const WeatherChart = ({chartNumber, chartInfo, city }) => {
         }
         // --> Length is 48 so 2 Days
         //Sets each line for the line chart
-        // Blue --> #00d4ff
-        // Tan --> #fd8e2d
-        // Night --> #070a0a
         chartDataset.push({
           label: 'Morning',
           backgroundColor: '#219cd7',
