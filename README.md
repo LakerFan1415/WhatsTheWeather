@@ -2,7 +2,7 @@
 
 ## Created with:
 - React
-- Open Weather Map api [Open Weather Map](https://openweathermap.org/)
+- Open Weather Map api https://openweathermap.org/
 - Chart.js
 
 
