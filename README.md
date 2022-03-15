@@ -6,7 +6,7 @@
 - Chart.js
 
 
-### Adding Some additional Functiontality
+### Adding Some additional Functionality
 1. Choose State
 2. Adding Alerts
 3. Choose Between Charts & Tables
