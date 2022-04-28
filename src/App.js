@@ -69,10 +69,12 @@ function App() {
   }
 
   return (
-    <div style={{textAlign:'center'}}>
-      <Header setChartNumber={setChartNumber} chartNumber={chartNumber} handleClick={handleMenuClick}/>
-      <SelectCity clickChange={handleClick} />
-      <WeatherChart chartNumber={chartNumber} chartInfo={chartInfo} city={city}/>
+    <div className="main-container">
+      <div style={{textAlign:'center'}}>
+        <Header setChartNumber={setChartNumber} chartNumber={chartNumber} handleClick={handleMenuClick}/>
+        <SelectCity clickChange={handleClick} />
+        <WeatherChart chartNumber={chartNumber} chartInfo={chartInfo} city={city}/>
+      </div>
     </div>
   );
 }
