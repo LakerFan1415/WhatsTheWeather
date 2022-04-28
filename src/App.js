@@ -5,6 +5,8 @@ import Header from './components/Header';
 import SelectCity from './components/SelectCity';
 import WeatherChart from './components/WeatherChart';
 
+import WbSunnyIcon from '@mui/icons-material/WbSunny';
+
 function App() {
 
   const [city, setCity] = useState('');
@@ -73,6 +75,10 @@ function App() {
       <div style={{textAlign:'center'}}>
         <Header setChartNumber={setChartNumber} chartNumber={chartNumber} handleClick={handleMenuClick}/>
         <SelectCity clickChange={handleClick} />
+        <p className='test'>
+          Select an Option Above...
+          <WbSunnyIcon  className='sun-icon'/>
+          </p>
         <WeatherChart chartNumber={chartNumber} chartInfo={chartInfo} city={city}/>
       </div>
     </div>
