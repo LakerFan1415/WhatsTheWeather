@@ -147,7 +147,7 @@ const WeatherChart = ({chartNumber, chartInfo, city }) => {
         }
 
         //If there is a chart
-        if(city){
+        if(city && document.getElementById('chart')){
         //Remove Loading Text
         document.getElementsByClassName('charts-loading')[0].style.display = 'none';
       }else {

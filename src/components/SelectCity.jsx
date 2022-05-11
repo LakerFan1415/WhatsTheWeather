@@ -5,7 +5,7 @@ const SelectCity = (props) => {
     return (
         <div>
             <input id = 'city-input' type='text' placeholder='Enter A City'></input>
-            <button id='city-btn' onClick={handleClick}>Enter</button>
+            <button id='city-btn' onClick={handleClick}>Submit</button>
         </div>
     )
 }

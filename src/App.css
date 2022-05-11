@@ -56,17 +56,32 @@ li a:hover {
 /*  Input Box and Button  */
 #city-input {
   border: groove;
-  border-radius: 5%;
-  background-color: lightgray;
-  color: black;
+  border-radius: 10%;
+  background-color: #c5d8ef;
+  color: white;
   font-weight: bold;
   font-size: 1rem;
 }
 
+#city-input:focus{
+  background-color: #6c8fb9;
+  color: black;
+  box-shadow: 2px 2px 2px white;
+}
+
+
 #city-btn {
-  background-color: lightgray;
+  background-color: #8cb1df;
   border: groove;
+  border-color: #c5d8ef;
   font-size: 1rem;
+  border-radius: 20%;
+  color: white;
+}
+
+#city-btn:hover {
+  transform: translateY(5%);
+  background-color: #6c8fb9;
 }
 
 
@@ -83,7 +98,7 @@ li a:hover {
   top: 20%;
   left: 50%;
   transform: translateX(-50%);
-  font-size: 1.5rem;
+  font-size: 1.7rem;
   color: #2a5c9a;
   text-shadow: 5px 5px 5px #8cb1df;
 }
