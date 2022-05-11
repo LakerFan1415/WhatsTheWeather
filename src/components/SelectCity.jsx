@@ -1,11 +1,11 @@
 const SelectCity = (props) => {
 
-    const { clickChange } = props;
+    const { handleClick } = props;
 
     return (
         <div>
             <input id = 'city-input' type='text' placeholder='Enter A City'></input>
-            <button id='city-btn' onClick={clickChange}>Enter</button>
+            <button id='city-btn' onClick={handleClick}>Enter</button>
         </div>
     )
 }

@@ -5,7 +5,6 @@ import Header from './components/Header';
 import SelectCity from './components/SelectCity';
 import WeatherChart from './components/WeatherChart';
 
-import WbSunnyIcon from '@mui/icons-material/WbSunny';
 
 function App() {
 
@@ -37,9 +36,15 @@ function App() {
                 listEl[i].classList.remove(listEl[i].className);
             }
         }
+
+        //Only Add Class If There is a city
+        if(city){
+
         e.target.parentNode.classList.add('selected');
         
         setChartNumber(numbers[e.target.innerHTML])
+
+        }
   }
 
   const fetchCity = async (city) => {
@@ -65,7 +70,26 @@ function App() {
     throw new Error('Try Another City Or Check Spelling');
   }
     } catch(e) {
+      document.getElementById('city-input').value = '';
+      //Removes Chart If there is an error
+      let chartParent = document.getElementById('charts');
+      let currChart = document.getElementById('chart');
+      if(chartParent.childNodes.length > 1){
+        chartParent.removeChild(currChart);
+        setChartInfo({});
+        setCity('');
+
+      }
       window.alert(e.message);
+
+      //Remove selected class from nav bar
+      let selectedListEl = document.getElementsByClassName('selected')[0].classList.remove('selected');
+
+      //Add Loading Text
+      console.log(document.getElementsByClassName('charts-loading')[0].style.display)
+      document.getElementsByClassName('charts-loading')[0].style.display = "initial";
+      console.log(document.getElementsByClassName('charts-loading')[0].style.display)
+
     }
     
   }
@@ -73,12 +97,8 @@ function App() {
   return (
     <div className="main-container">
       <div style={{textAlign:'center'}}>
-        <Header setChartNumber={setChartNumber} chartNumber={chartNumber} handleClick={handleMenuClick}/>
-        <SelectCity clickChange={handleClick} />
-        <p className='test'>
-          Select an Option Above...
-          <WbSunnyIcon  className='sun-icon'/>
-          </p>
+        <Header setChartNumber={setChartNumber} chartNumber={chartNumber} handleMenuClick={handleMenuClick}/>
+        <SelectCity handleClick={handleClick} />
         <WeatherChart chartNumber={chartNumber} chartInfo={chartInfo} city={city}/>
       </div>
     </div>

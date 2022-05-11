@@ -1,6 +1,7 @@
 import Chart from 'chart.js/auto';
 import { useEffect } from 'react';
 
+import WbSunnyIcon from '@mui/icons-material/WbSunny';
 
 const WeatherChart = ({chartNumber, chartInfo, city }) => {
 
@@ -122,28 +123,49 @@ const WeatherChart = ({chartNumber, chartInfo, city }) => {
       
   }
 
-      useEffect(() => {
+      useEffect(() => { 
         let chartParent = document.getElementById('charts');
-        if (chartParent.childNodes[0]) {chartParent.removeChild(document.getElementById('aChart'))};
-        if(chartNumber != null){
-          let el = document.createElement('canvas');
-          el.id = 'aChart';
-          chartParent.appendChild(el);
-
-          //Background Color of the canvas
-          document.getElementById('aChart').style.backgroundColor = '#c5d8ef';
-          let chart = new Chart(  /* eslint-disable-line */
-            document.getElementById('aChart'),
-            config
-          )
+        
+        //Clear Canvas for a new chart
+        if(chartParent.childNodes.length > 1){
+          chartParent.removeChild(document.getElementById('chart'));
         }
         
-      })
+
+        //Create New Chart
+        if (chartNumber != null){
+          let el = document.createElement('canvas');
+          el.id = 'chart';
+          chartParent.appendChild(el);
+
+          document.getElementById('chart').style.backgroundColor = "#c5d8ef";
+          let chart = new Chart(
+            document.getElementById('chart'),
+            config
+          )
+
+        }
+
+        //If there is a chart
+        if(city){
+        //Remove Loading Text
+        document.getElementsByClassName('charts-loading')[0].style.display = 'none';
+      }else {
+        //Re-Add Text
+        document.getElementsByClassName('charts-loading')[0].style.display = 'initial'
+
+      }
+    })
 
     return(
-        <div id='charts'>
+      <div id='charts'>
             
-        </div>
+        <p className='charts-loading'>
+        Select A City Above...
+        <WbSunnyIcon  className='sun-icon'/>
+        </p>
+      </div>
+        
     )
 }
 
