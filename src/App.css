@@ -2,6 +2,11 @@ body > #root > div{
   height:100vh;
 }
 
+html{
+  font-size: 16px;
+}
+
+
 /* Body Style */
 body {
   background-color: #2a5c9a;
@@ -15,6 +20,7 @@ body {
 /* Header Styles */
 #header{
   background-image: linear-gradient( #2a5c9a, #6f9fd8);
+  font-size: 1.5rem;
 }
 
 
@@ -54,11 +60,13 @@ li a:hover {
   background-color: lightgray;
   color: black;
   font-weight: bold;
+  font-size: 1rem;
 }
 
 #city-btn {
   background-color: lightgray;
   border: groove;
+  font-size: 1rem;
 }
 
 
@@ -72,10 +80,12 @@ li a:hover {
 
 .charts-loading {
   position: absolute;
-  top: 50%;
+  top: 20%;
   left: 50%;
   transform: translateX(-50%);
-  font-size: 150%;
+  font-size: 1.5rem;
+  color: #2a5c9a;
+  text-shadow: 5px 5px 5px #8cb1df;
 }
 
 .sun-icon {
