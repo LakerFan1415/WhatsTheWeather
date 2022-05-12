@@ -1,6 +1,5 @@
 const Header = ({setChartNumber, chartNumber, handleMenuClick}) =>{
 
-        //Focusing on the chart when clicked
     return(
         <div id = 'header'>
             <h1>Weather Forecast</h1>

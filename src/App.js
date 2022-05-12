@@ -48,6 +48,28 @@ function App() {
   }
 
   const fetchCity = async (city) => {
+
+    //Read from localstorage
+    if(localStorage.getItem(city)){
+      let cachedCity = new Date(JSON.parse(localStorage.getItem(city))[0]).getTime()
+      let currentTime = new Date().getTime()
+
+      let timeSinceCache = currentTime - cachedCity
+
+      //Read Data from Local Storage if time difference less than 2 minutes -> 120,000ms
+      if(timeSinceCache < 120000){
+        let weatherData = JSON.parse(localStorage.getItem(city))[1]
+        
+        setChartInfo(weatherData)
+
+        //Set Value to Zero
+        document.getElementById('city-input').value = '';
+
+        return;
+        }
+
+      }
+
     try {
     const cityInfo = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${process.env.REACT_APP_API_KEY}`);
     if (cityInfo.ok){
@@ -61,6 +83,9 @@ function App() {
 
 
         setChartInfo(response2);
+
+        //Set to Local Storage for caching
+        localStorage.setItem(city, JSON.stringify([new Date(), response2]) )
 
     }
     //Set Value to Zero
