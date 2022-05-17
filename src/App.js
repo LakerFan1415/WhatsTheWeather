@@ -108,12 +108,10 @@ function App() {
       window.alert(e.message);
 
       //Remove selected class from nav bar
-      let selectedListEl = document.getElementsByClassName('selected')[0].classList.remove('selected');
+      document.getElementsByClassName('selected')[0].classList.remove('selected');
 
       //Add Loading Text
-      console.log(document.getElementsByClassName('charts-loading')[0].style.display)
       document.getElementsByClassName('charts-loading')[0].style.display = "initial";
-      console.log(document.getElementsByClassName('charts-loading')[0].style.display)
 
     }
     
@@ -122,7 +120,7 @@ function App() {
   return (
     <div className="main-container">
       <div style={{textAlign:'center'}}>
-        <Header setChartNumber={setChartNumber} chartNumber={chartNumber} handleMenuClick={handleMenuClick}/>
+        <Header handleMenuClick={handleMenuClick}/>
         <SelectCity handleClick={handleClick} />
         <WeatherChart chartNumber={chartNumber} chartInfo={chartInfo} city={city}/>
       </div>

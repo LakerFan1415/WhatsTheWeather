@@ -1,4 +1,4 @@
-const Header = ({setChartNumber, chartNumber, handleMenuClick}) =>{
+const Header = ({handleMenuClick}) =>{
 
     return(
         <div id = 'header'>
