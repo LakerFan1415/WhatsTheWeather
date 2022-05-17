@@ -20,6 +20,7 @@ const WeatherChart = ({chartNumber, chartInfo, city }) => {
       chartData = [];
       chartData2 = [];
       chartData3 = [];
+      
     try {  
       if (num === 1){
         // Gets dates for hourly
